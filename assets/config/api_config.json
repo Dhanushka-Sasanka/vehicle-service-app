@@ -1,0 +1,9 @@
+{
+  "base_api_url": "https://fortuna-version.herokuapp.com/api",
+  "user_apis": {
+    "register_user": "/users",
+    "login_user": "/auth",
+    "request_otp": "/otp",
+    "verify_otp": "/otp/verify"
+  }
+}
