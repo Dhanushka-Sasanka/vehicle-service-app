@@ -11,8 +11,8 @@ class AuthService extends TokenManager {
 
   Future<bool> login(LoginUser loginUser) async {
     try {
-      var response = await dio.post(_userApiConfigHandler!.loginUser,
-          data: FormData.fromMap(loginUser.toJson()));
+      // var response = await dio.post(_userApiConfigHandler!.loginUser,
+      //     data: FormData.fromMap(loginUser.toJson()));
 
       // if (response.data?.containsKey("token")) {
       //   LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
