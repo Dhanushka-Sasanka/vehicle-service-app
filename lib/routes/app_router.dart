@@ -17,7 +17,6 @@ import 'guards/auth.guard.dart';
     AutoRoute(page: HomeBase, path: '/home', initial: true, guards: [
       AuthGuard
     ], children: [
-      // AutoRoute(page: HomeBase, path: '/home', initial: true, children: [
       AutoRoute(page: HomeScreen, initial: true),
       AutoRoute(page: AddVehicleScreen, path: 'add-vehicle'),
       AutoRoute(page: MyVehiclesScreen, path: 'my-vehicles'),

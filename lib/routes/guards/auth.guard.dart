@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:get/get.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:vehicle_app/routes/app_router.gr.dart';
 import 'package:vehicle_app/services/auth/token_manager.dart';
 

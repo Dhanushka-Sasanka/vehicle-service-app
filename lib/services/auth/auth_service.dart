@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:vehicle_app/config/config_handler.dart';
 import 'package:vehicle_app/config/model/api_config.dart';
 import 'package:vehicle_app/models/users/users_and_auth_model.dart';
@@ -7,27 +9,10 @@ class AuthService extends TokenManager {
   final UserApis? _userApiConfigHandler =
       ConfigHandler.loadAPIConfigs()?.userApis;
 
-  // Future register(RegisterUser registerUser) async {
-  //   try {
-  //     var response = await dio.post(_userApiConfigHandler!.registerUser,
-  //         data: registerUser.toJson());
-
-  //     if (response.data?.containsKey("token")) {
-  //       LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
-  //       saveTokens(loginAuthToken);
-  //       return true;
-  //     }
-  //     return false;
-  //   } catch (e) {
-  //     print(e);
-  //     return false;
-  //   }
-  // }
-
   Future<bool> login(LoginUser loginUser) async {
     try {
-      // var response = await dio.post(_userApiConfigHandler!.loginUser,
-      //     data: loginUser.toJson());
+      var response = await dio.post(_userApiConfigHandler!.loginUser,
+          data: FormData.fromMap(loginUser.toJson()));
 
       // if (response.data?.containsKey("token")) {
       //   LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
@@ -38,7 +23,37 @@ class AuthService extends TokenManager {
       saveTokens(LoginAuthToken(token: "logged"));
       return true;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
+      return false;
+    }
+  }
+
+  Future<bool> register(RegisterUser? registerUser) async {
+    try {
+      registerUser = RegisterUser(
+          firstName: "Kasun",
+          lastName: "Nirmala",
+          email: "asd@gmail.com",
+          nic: "23453465V",
+          contact: "0714563565",
+          password: "1234567890");
+      var response = await dio.post(_userApiConfigHandler!.registerUser,
+          data: FormData.fromMap(registerUser.toJson()));
+
+      // if (response.data?.containsKey("token")) {
+      //   LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
+      //   saveTokens(loginAuthToken);
+      //   return true;
+      // }
+      // return false;
+      saveTokens(LoginAuthToken(token: "logged"));
+      return true;
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
       return false;
     }
   }

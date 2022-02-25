@@ -25,12 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void disChangeDependencies() {
-    super.didChangeDependencies();
-    print(context.router.topRoute.name);
-  }
-
-  @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
     return Column(

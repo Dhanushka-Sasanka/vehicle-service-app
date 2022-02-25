@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
@@ -16,7 +17,9 @@ class LoginController extends GetxController {
   Future login(BuildContext context) async {
     // AutoRouter.of(context).replace(const HomeBase());
     if (formKey.value.currentState!.saveAndValidate()) {
-      print(formKey.value.currentState!.value);
+      if (kDebugMode) {
+        print(formKey.value.currentState!.value);
+      }
       isLogging.value = true;
       bool isLogged = await _authService.login(UsersAndAuthModel.loginUser(
               email: formKey.value.currentState!.value["email"],
