@@ -9,10 +9,13 @@ class VehicleService extends BaseService {
   final VehicleApis? _vehicleApiConfigHandler =
       ConfigHandler.loadAPIConfigs()?.vehicleApis;
 
-  Future<List<VehicleModel>> getAllVehicles() async {
+  Future<List<VehicleModel>> getAllVehicles(int customerId) async {
     try {
-      var response = await dio.get(_vehicleApiConfigHandler!.getAllVehicles);
-      return [];
+      var response = await dio
+          .get("${_vehicleApiConfigHandler!.getAllVehicles}/$customerId");
+      return (response.data as List)
+          .map((e) => VehicleModel.fromJson(e))
+          .toList();
     } catch (e) {
       if (kDebugMode) {
         print(e);

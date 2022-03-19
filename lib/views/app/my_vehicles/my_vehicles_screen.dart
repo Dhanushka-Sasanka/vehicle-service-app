@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vehicle_app/models/vehicle/vehicle_model.dart';
+import 'package:vehicle_app/utils/constants.dart';
 
 import 'my_vehicles_controller.dart';
 
@@ -21,6 +23,24 @@ class _MyVehiclesScreenState extends State<MyVehiclesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Obx(() => _myVehiclesController.myVehicles.isNotEmpty
+        ? ListView.builder(
+            itemCount: _myVehiclesController.myVehicles.length,
+            itemBuilder: (context, index) {
+              VehicleModel vehicleModel =
+                  _myVehiclesController.myVehicles[index];
+              return Padding(
+                padding: const EdgeInsets.all(defaultPadding),
+                child: Card(
+                  child: ListTile(
+                    title: Text(vehicleModel.regNo),
+                    subtitle: Text(vehicleModel.vehicleType),
+                  ),
+                ),
+              );
+            })
+        : const Center(
+            child: Text("No Items to show"),
+          ));
   }
 }

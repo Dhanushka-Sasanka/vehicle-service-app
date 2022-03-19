@@ -9,11 +9,13 @@ class AppointmentService extends BaseService {
   final AppointmentApis? _appointmentApiConfigHandler =
       ConfigHandler.loadAPIConfigs()?.appointmentApis;
 
-  Future<List<AppointmentModel>> getAllAppointments() async {
+  Future<List<AppointmentDataModel>> getAllAppointments(int userId) async {
     try {
-      var response =
-          await dio.get(_appointmentApiConfigHandler!.getAllAppointments);
-      return [];
+      var response = await dio
+          .get("${_appointmentApiConfigHandler!.getAllAppointments}/$userId");
+      return (response.data as List)
+          .map((e) => AppointmentDataModel.fromJson(e))
+          .toList();
     } catch (e) {
       if (kDebugMode) {
         print(e);
@@ -28,25 +30,6 @@ class AppointmentService extends BaseService {
       var response = await dio.post(
           _appointmentApiConfigHandler!.addAppointment,
           data: appointmentModel.toJson());
-
-      return const HTTPResponseModel(status: true);
-    } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
-      return const HTTPResponseModel(
-          status: false, message: "Application Error");
-    }
-  }
-
-  Future<HTTPResponseModel> updateAppointment(
-      AppointmentModel appointmentModel) async {
-    try {
-      var response = await dio.post(
-        _appointmentApiConfigHandler!.updateAppointment,
-        queryParameters: {"appId": appointmentModel.id},
-        data: appointmentModel.toJson(),
-      );
 
       return const HTTPResponseModel(status: true);
     } catch (e) {

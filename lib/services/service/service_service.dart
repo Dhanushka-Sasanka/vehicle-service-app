@@ -11,7 +11,9 @@ class ServiceService extends BaseService {
   Future<List<ServiceModel>> getAllServices() async {
     try {
       var response = await dio.get(_serviceApiConfigHandler!.getAllServices);
-      return [];
+      return (response.data as List)
+          .map((e) => ServiceModel.fromJson(e))
+          .toList();
     } catch (e) {
       if (kDebugMode) {
         print(e);

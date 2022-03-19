@@ -1,12 +1,12 @@
 {
   "base_api_url": "https://vehicle-manger-api.herokuapp.com",
   "user_apis": {
-    "register_user": "/auth/register",
+    "register_user": "/auth/registerCustomerMobileApp",
     "login_user": "/auth/sign-in"
   },
   "appointment_apis":{
-    "get_all_appointments":"/appointment/fetchAppointments",
-    "get_appointment_by_id":"",
+    "get_all_appointments":"/appointment/fetchAppointmentsByCustomerID",
+    "get_appointment_by_id":"/appointment/getAppointmentById", 
     "add_appointment":"/appointment/createAppointment",
     "update_appointment":"/appointment/updateAppointment"
   },
@@ -14,8 +14,8 @@
     "get_all_services":"/service/getAllServices"
   },
   "vehicle_apis":{
-    "get_all_vehicles":"",
-    "add_vehicle":""
+    "get_all_vehicles":"/vehicle/getVehicleByCustomerID",
+    "add_vehicle":"/vehicle/createVehicle"
   }
 
 }

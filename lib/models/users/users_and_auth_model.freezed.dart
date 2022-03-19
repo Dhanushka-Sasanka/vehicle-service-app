@@ -57,9 +57,10 @@ class _$UsersAndAuthModelTearOff {
     );
   }
 
-  LoginAuthToken loginAuthToken({required String token}) {
+  LoginAuthToken loginAuthToken({String? token, int? userId}) {
     return LoginAuthToken(
       token: token,
+      userId: userId,
     );
   }
 
@@ -79,7 +80,7 @@ mixin _$UsersAndAuthModel {
             String nic, String contact, String password)
         registerUser,
     required TResult Function(String email, String password) loginUser,
-    required TResult Function(String token) loginAuthToken,
+    required TResult Function(String? token, int? userId) loginAuthToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -88,7 +89,7 @@ mixin _$UsersAndAuthModel {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,7 +98,7 @@ mixin _$UsersAndAuthModel {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -278,7 +279,7 @@ class _$RegisterUser implements RegisterUser {
             String nic, String contact, String password)
         registerUser,
     required TResult Function(String email, String password) loginUser,
-    required TResult Function(String token) loginAuthToken,
+    required TResult Function(String? token, int? userId) loginAuthToken,
   }) {
     return registerUser(firstName, lastName, email, nic, contact, password);
   }
@@ -290,7 +291,7 @@ class _$RegisterUser implements RegisterUser {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
   }) {
     return registerUser?.call(
         firstName, lastName, email, nic, contact, password);
@@ -303,7 +304,7 @@ class _$RegisterUser implements RegisterUser {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -459,7 +460,7 @@ class _$LoginUser implements LoginUser {
             String nic, String contact, String password)
         registerUser,
     required TResult Function(String email, String password) loginUser,
-    required TResult Function(String token) loginAuthToken,
+    required TResult Function(String? token, int? userId) loginAuthToken,
   }) {
     return loginUser(email, password);
   }
@@ -471,7 +472,7 @@ class _$LoginUser implements LoginUser {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
   }) {
     return loginUser?.call(email, password);
   }
@@ -483,7 +484,7 @@ class _$LoginUser implements LoginUser {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
     required TResult orElse(),
   }) {
     if (loginUser != null) {
@@ -550,7 +551,7 @@ abstract class $LoginAuthTokenCopyWith<$Res> {
   factory $LoginAuthTokenCopyWith(
           LoginAuthToken value, $Res Function(LoginAuthToken) then) =
       _$LoginAuthTokenCopyWithImpl<$Res>;
-  $Res call({String token});
+  $Res call({String? token, int? userId});
 }
 
 /// @nodoc
@@ -567,12 +568,17 @@ class _$LoginAuthTokenCopyWithImpl<$Res>
   @override
   $Res call({
     Object? token = freezed,
+    Object? userId = freezed,
   }) {
     return _then(LoginAuthToken(
       token: token == freezed
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      userId: userId == freezed
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -580,21 +586,23 @@ class _$LoginAuthTokenCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginAuthToken implements LoginAuthToken {
-  _$LoginAuthToken({required this.token, String? $type})
+  _$LoginAuthToken({this.token, this.userId, String? $type})
       : $type = $type ?? 'loginAuthToken';
 
   factory _$LoginAuthToken.fromJson(Map<String, dynamic> json) =>
       _$$LoginAuthTokenFromJson(json);
 
   @override
-  final String token;
+  final String? token;
+  @override
+  final int? userId;
 
   @JsonKey(name: 'runtimeType')
   final String $type;
 
   @override
   String toString() {
-    return 'UsersAndAuthModel.loginAuthToken(token: $token)';
+    return 'UsersAndAuthModel.loginAuthToken(token: $token, userId: $userId)';
   }
 
   @override
@@ -602,12 +610,15 @@ class _$LoginAuthToken implements LoginAuthToken {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is LoginAuthToken &&
-            const DeepCollectionEquality().equals(other.token, token));
+            const DeepCollectionEquality().equals(other.token, token) &&
+            const DeepCollectionEquality().equals(other.userId, userId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(token));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(token),
+      const DeepCollectionEquality().hash(userId));
 
   @JsonKey(ignore: true)
   @override
@@ -621,9 +632,9 @@ class _$LoginAuthToken implements LoginAuthToken {
             String nic, String contact, String password)
         registerUser,
     required TResult Function(String email, String password) loginUser,
-    required TResult Function(String token) loginAuthToken,
+    required TResult Function(String? token, int? userId) loginAuthToken,
   }) {
-    return loginAuthToken(token);
+    return loginAuthToken(token, userId);
   }
 
   @override
@@ -633,9 +644,9 @@ class _$LoginAuthToken implements LoginAuthToken {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
   }) {
-    return loginAuthToken?.call(token);
+    return loginAuthToken?.call(token, userId);
   }
 
   @override
@@ -645,11 +656,11 @@ class _$LoginAuthToken implements LoginAuthToken {
             String nic, String contact, String password)?
         registerUser,
     TResult Function(String email, String password)? loginUser,
-    TResult Function(String token)? loginAuthToken,
+    TResult Function(String? token, int? userId)? loginAuthToken,
     required TResult orElse(),
   }) {
     if (loginAuthToken != null) {
-      return loginAuthToken(token);
+      return loginAuthToken(token, userId);
     }
     return orElse();
   }
@@ -695,12 +706,13 @@ class _$LoginAuthToken implements LoginAuthToken {
 }
 
 abstract class LoginAuthToken implements UsersAndAuthModel {
-  factory LoginAuthToken({required String token}) = _$LoginAuthToken;
+  factory LoginAuthToken({String? token, int? userId}) = _$LoginAuthToken;
 
   factory LoginAuthToken.fromJson(Map<String, dynamic> json) =
       _$LoginAuthToken.fromJson;
 
-  String get token;
+  String? get token;
+  int? get userId;
   @JsonKey(ignore: true)
   $LoginAuthTokenCopyWith<LoginAuthToken> get copyWith =>
       throw _privateConstructorUsedError;

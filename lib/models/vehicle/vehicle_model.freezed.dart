@@ -22,9 +22,16 @@ VehicleModel _$VehicleModelFromJson(Map<String, dynamic> json) {
 class _$VehicleModelTearOff {
   const _$VehicleModelTearOff();
 
-  _VehicleModel call({@JsonKey(name: '_id') String? id}) {
+  _VehicleModel call(
+      {required int vehicleID,
+      required String vehicleType,
+      required String regNo,
+      required int customerID}) {
     return _VehicleModel(
-      id: id,
+      vehicleID: vehicleID,
+      vehicleType: vehicleType,
+      regNo: regNo,
+      customerID: customerID,
     );
   }
 
@@ -38,8 +45,10 @@ const $VehicleModel = _$VehicleModelTearOff();
 
 /// @nodoc
 mixin _$VehicleModel {
-  @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
+  int get vehicleID => throw _privateConstructorUsedError;
+  String get vehicleType => throw _privateConstructorUsedError;
+  String get regNo => throw _privateConstructorUsedError;
+  int get customerID => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -52,7 +61,7 @@ abstract class $VehicleModelCopyWith<$Res> {
   factory $VehicleModelCopyWith(
           VehicleModel value, $Res Function(VehicleModel) then) =
       _$VehicleModelCopyWithImpl<$Res>;
-  $Res call({@JsonKey(name: '_id') String? id});
+  $Res call({int vehicleID, String vehicleType, String regNo, int customerID});
 }
 
 /// @nodoc
@@ -65,13 +74,28 @@ class _$VehicleModelCopyWithImpl<$Res> implements $VehicleModelCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? vehicleID = freezed,
+    Object? vehicleType = freezed,
+    Object? regNo = freezed,
+    Object? customerID = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+      vehicleID: vehicleID == freezed
+          ? _value.vehicleID
+          : vehicleID // ignore: cast_nullable_to_non_nullable
+              as int,
+      vehicleType: vehicleType == freezed
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as String,
+      regNo: regNo == freezed
+          ? _value.regNo
+          : regNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerID: customerID == freezed
+          ? _value.customerID
+          : customerID // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -83,7 +107,7 @@ abstract class _$VehicleModelCopyWith<$Res>
           _VehicleModel value, $Res Function(_VehicleModel) then) =
       __$VehicleModelCopyWithImpl<$Res>;
   @override
-  $Res call({@JsonKey(name: '_id') String? id});
+  $Res call({int vehicleID, String vehicleType, String regNo, int customerID});
 }
 
 /// @nodoc
@@ -98,13 +122,28 @@ class __$VehicleModelCopyWithImpl<$Res> extends _$VehicleModelCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? vehicleID = freezed,
+    Object? vehicleType = freezed,
+    Object? regNo = freezed,
+    Object? customerID = freezed,
   }) {
     return _then(_VehicleModel(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
+      vehicleID: vehicleID == freezed
+          ? _value.vehicleID
+          : vehicleID // ignore: cast_nullable_to_non_nullable
+              as int,
+      vehicleType: vehicleType == freezed
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as String,
+      regNo: regNo == freezed
+          ? _value.regNo
+          : regNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerID: customerID == freezed
+          ? _value.customerID
+          : customerID // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -112,18 +151,27 @@ class __$VehicleModelCopyWithImpl<$Res> extends _$VehicleModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_VehicleModel implements _VehicleModel {
-  const _$_VehicleModel({@JsonKey(name: '_id') this.id});
+  const _$_VehicleModel(
+      {required this.vehicleID,
+      required this.vehicleType,
+      required this.regNo,
+      required this.customerID});
 
   factory _$_VehicleModel.fromJson(Map<String, dynamic> json) =>
       _$$_VehicleModelFromJson(json);
 
   @override
-  @JsonKey(name: '_id')
-  final String? id;
+  final int vehicleID;
+  @override
+  final String vehicleType;
+  @override
+  final String regNo;
+  @override
+  final int customerID;
 
   @override
   String toString() {
-    return 'VehicleModel(id: $id)';
+    return 'VehicleModel(vehicleID: $vehicleID, vehicleType: $vehicleType, regNo: $regNo, customerID: $customerID)';
   }
 
   @override
@@ -131,12 +179,21 @@ class _$_VehicleModel implements _VehicleModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _VehicleModel &&
-            const DeepCollectionEquality().equals(other.id, id));
+            const DeepCollectionEquality().equals(other.vehicleID, vehicleID) &&
+            const DeepCollectionEquality()
+                .equals(other.vehicleType, vehicleType) &&
+            const DeepCollectionEquality().equals(other.regNo, regNo) &&
+            const DeepCollectionEquality()
+                .equals(other.customerID, customerID));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(id));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(vehicleID),
+      const DeepCollectionEquality().hash(vehicleType),
+      const DeepCollectionEquality().hash(regNo),
+      const DeepCollectionEquality().hash(customerID));
 
   @JsonKey(ignore: true)
   @override
@@ -150,15 +207,23 @@ class _$_VehicleModel implements _VehicleModel {
 }
 
 abstract class _VehicleModel implements VehicleModel {
-  const factory _VehicleModel({@JsonKey(name: '_id') String? id}) =
-      _$_VehicleModel;
+  const factory _VehicleModel(
+      {required int vehicleID,
+      required String vehicleType,
+      required String regNo,
+      required int customerID}) = _$_VehicleModel;
 
   factory _VehicleModel.fromJson(Map<String, dynamic> json) =
       _$_VehicleModel.fromJson;
 
   @override
-  @JsonKey(name: '_id')
-  String? get id;
+  int get vehicleID;
+  @override
+  String get vehicleType;
+  @override
+  String get regNo;
+  @override
+  int get customerID;
   @override
   @JsonKey(ignore: true)
   _$VehicleModelCopyWith<_VehicleModel> get copyWith =>

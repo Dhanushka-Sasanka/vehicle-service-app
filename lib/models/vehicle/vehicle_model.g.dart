@@ -8,10 +8,16 @@ part of 'vehicle_model.dart';
 
 _$_VehicleModel _$$_VehicleModelFromJson(Map<String, dynamic> json) =>
     _$_VehicleModel(
-      id: json['_id'] as String?,
+      vehicleID: json['vehicleID'] as int,
+      vehicleType: json['vehicleType'] as String,
+      regNo: json['regNo'] as String,
+      customerID: json['customerID'] as int,
     );
 
 Map<String, dynamic> _$$_VehicleModelToJson(_$_VehicleModel instance) =>
     <String, dynamic>{
-      '_id': instance.id,
+      'vehicleID': instance.vehicleID,
+      'vehicleType': instance.vehicleType,
+      'regNo': instance.regNo,
+      'customerID': instance.customerID,
     };

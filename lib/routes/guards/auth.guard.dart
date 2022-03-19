@@ -16,7 +16,7 @@ class AuthGuard extends AutoRouteGuard {
 
   bool isAuthenticated() {
     TokenManager _tokenManager = Get.find<TokenManager>();
-    String? accessToken = _tokenManager.getAccessToken();
+    String? accessToken = _tokenManager.getAccessToken().token;
     // Map<String, dynamic>? tokenData = JwtDecoder.tryDecode(accessToken ?? '');
     // return tokenData != null &&
     //     !JwtDecoder.isExpired(accessToken!) &&

@@ -8,18 +8,22 @@ class TokenManager extends BaseService {
     GetStorage box = GetStorage();
     await box.write(
         TokenMangerKeys.accessToken.toString(), loginAuthToken.token);
+    await box.write(TokenMangerKeys.userId.toString(), loginAuthToken.userId);
     return true;
   }
 
-  String? getAccessToken() {
+  LoginAuthToken getAccessToken() {
     GetStorage box = GetStorage();
-    return box.read(TokenMangerKeys.accessToken.toString());
+    return LoginAuthToken(
+        token: box.read(TokenMangerKeys.accessToken.toString()),
+        userId: box.read(TokenMangerKeys.userId.toString()));
   }
 
   Future<void> removeTokens() async {
     GetStorage box = GetStorage();
     await box.remove(TokenMangerKeys.accessToken.toString());
+    await box.remove(TokenMangerKeys.userId.toString());
   }
 }
 
-enum TokenMangerKeys { accessToken }
+enum TokenMangerKeys { accessToken, userId }

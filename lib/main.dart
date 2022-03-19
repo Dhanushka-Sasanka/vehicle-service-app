@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/localization/l10n.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:vehicle_app/routes/app_router.gr.dart';
 import 'package:vehicle_app/routes/guards/auth.guard.dart';
 import 'package:vehicle_app/routes/observers/route_observer.dart';
@@ -11,7 +12,8 @@ import 'config/config_handler.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  ConfigHandler.init().then((_) => runApp(MyApp()));
+  ConfigHandler.init()
+      .then((_) async => {await GetStorage.init(), runApp(MyApp())});
 }
 
 class MyApp extends StatelessWidget {

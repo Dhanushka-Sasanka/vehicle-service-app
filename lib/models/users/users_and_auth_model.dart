@@ -18,7 +18,8 @@ class UsersAndAuthModel with _$UsersAndAuthModel {
   }) = LoginUser;
 
   factory UsersAndAuthModel.loginAuthToken({
-    required String token,
+    String? token,
+    int? userId,
   }) = LoginAuthToken;
   factory UsersAndAuthModel.fromJson(Map<String, dynamic> json) =>
       _$UsersAndAuthModelFromJson(json);

@@ -43,12 +43,14 @@ Map<String, dynamic> _$$LoginUserToJson(_$LoginUser instance) =>
 
 _$LoginAuthToken _$$LoginAuthTokenFromJson(Map<String, dynamic> json) =>
     _$LoginAuthToken(
-      token: json['token'] as String,
+      token: json['token'] as String?,
+      userId: json['userId'] as int?,
       $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$LoginAuthTokenToJson(_$LoginAuthToken instance) =>
     <String, dynamic>{
       'token': instance.token,
+      'userId': instance.userId,
       'runtimeType': instance.$type,
     };

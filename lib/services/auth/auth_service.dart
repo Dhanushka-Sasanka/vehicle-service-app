@@ -14,13 +14,7 @@ class AuthService extends TokenManager {
       // var response = await dio.post(_userApiConfigHandler!.loginUser,
       //     data: FormData.fromMap(loginUser.toJson()));
 
-      // if (response.data?.containsKey("token")) {
-      //   LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
-      //   saveTokens(loginAuthToken);
-      //   return true;
-      // }
-      // return false;
-      saveTokens(LoginAuthToken(token: "logged"));
+      saveTokens(LoginAuthToken(token: "logged", userId: 1));
       return true;
     } catch (e) {
       if (kDebugMode) {
@@ -35,20 +29,14 @@ class AuthService extends TokenManager {
       registerUser = RegisterUser(
           firstName: "Kasun",
           lastName: "Nirmala",
-          email: "asd@gmail.com",
+          email: "qwe@gmail.com",
           nic: "23453465V",
           contact: "0714563565",
           password: "1234567890");
       var response = await dio.post(_userApiConfigHandler!.registerUser,
-          data: FormData.fromMap(registerUser.toJson()));
+          data: registerUser.toJson());
 
-      // if (response.data?.containsKey("token")) {
-      //   LoginAuthToken loginAuthToken = LoginAuthToken.fromJson(response.data);
-      //   saveTokens(loginAuthToken);
-      //   return true;
-      // }
-      // return false;
-      saveTokens(LoginAuthToken(token: "logged"));
+      saveTokens(LoginAuthToken(token: "logged", userId: 1));
       return true;
     } catch (e) {
       if (kDebugMode) {

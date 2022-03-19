@@ -1,6 +1,25 @@
 import 'package:get/get.dart';
-import 'package:vehicle_app/views/app/home_base_controller.dart';
+import 'package:vehicle_app/models/appointment/appointment_model.dart';
+import 'package:vehicle_app/services/appointment/appointment_service.dart';
+import 'package:vehicle_app/utils/constants.dart';
 
 class AppointmentHistoryController extends GetxController {
-  final _homeBaseController = Get.put(HomeBaseController());
+  var myAppointments = <AppointmentDataModel>[].obs;
+
+  final AppointmentService _appointmentService = Get.find<AppointmentService>();
+  @override
+  void onReady() {
+    getAllVehicles();
+    super.onReady();
+  }
+
+  getAllVehicles() async {
+    try {
+      List<AppointmentDataModel> listAppointments =
+          await _appointmentService.getAllAppointments(userIdDemo);
+      myAppointments.value = listAppointments;
+    } catch (e) {
+      print(e);
+    }
+  }
 }

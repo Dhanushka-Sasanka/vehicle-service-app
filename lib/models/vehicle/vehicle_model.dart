@@ -5,7 +5,10 @@ part 'vehicle_model.g.dart';
 @freezed
 class VehicleModel with _$VehicleModel {
   const factory VehicleModel({
-    @JsonKey(name: '_id') String? id,
+    required int vehicleID,
+    required String vehicleType,
+    required String regNo,
+    required int customerID,
   }) = _VehicleModel;
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) =>
