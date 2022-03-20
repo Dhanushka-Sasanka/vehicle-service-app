@@ -5,7 +5,7 @@ part 'vehicle_model.g.dart';
 @freezed
 class VehicleModel with _$VehicleModel {
   const factory VehicleModel({
-    required int vehicleID,
+    int? vehicleID,
     required String vehicleType,
     required String regNo,
     required int customerID,
@@ -13,4 +13,16 @@ class VehicleModel with _$VehicleModel {
 
   factory VehicleModel.fromJson(Map<String, dynamic> json) =>
       _$VehicleModelFromJson(json);
+}
+
+@freezed
+class AddVehicleModel with _$AddVehicleModel {
+  const factory AddVehicleModel({
+    required String vehicleType,
+    required String regNo,
+    required int customerID,
+  }) = _AddVehicleModel;
+
+  factory AddVehicleModel.fromJson(Map<String, dynamic> json) =>
+      _$AddVehicleModelFromJson(json);
 }

@@ -23,7 +23,7 @@ class _$VehicleModelTearOff {
   const _$VehicleModelTearOff();
 
   _VehicleModel call(
-      {required int vehicleID,
+      {int? vehicleID,
       required String vehicleType,
       required String regNo,
       required int customerID}) {
@@ -45,7 +45,7 @@ const $VehicleModel = _$VehicleModelTearOff();
 
 /// @nodoc
 mixin _$VehicleModel {
-  int get vehicleID => throw _privateConstructorUsedError;
+  int? get vehicleID => throw _privateConstructorUsedError;
   String get vehicleType => throw _privateConstructorUsedError;
   String get regNo => throw _privateConstructorUsedError;
   int get customerID => throw _privateConstructorUsedError;
@@ -61,7 +61,7 @@ abstract class $VehicleModelCopyWith<$Res> {
   factory $VehicleModelCopyWith(
           VehicleModel value, $Res Function(VehicleModel) then) =
       _$VehicleModelCopyWithImpl<$Res>;
-  $Res call({int vehicleID, String vehicleType, String regNo, int customerID});
+  $Res call({int? vehicleID, String vehicleType, String regNo, int customerID});
 }
 
 /// @nodoc
@@ -83,7 +83,7 @@ class _$VehicleModelCopyWithImpl<$Res> implements $VehicleModelCopyWith<$Res> {
       vehicleID: vehicleID == freezed
           ? _value.vehicleID
           : vehicleID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -107,7 +107,7 @@ abstract class _$VehicleModelCopyWith<$Res>
           _VehicleModel value, $Res Function(_VehicleModel) then) =
       __$VehicleModelCopyWithImpl<$Res>;
   @override
-  $Res call({int vehicleID, String vehicleType, String regNo, int customerID});
+  $Res call({int? vehicleID, String vehicleType, String regNo, int customerID});
 }
 
 /// @nodoc
@@ -131,7 +131,7 @@ class __$VehicleModelCopyWithImpl<$Res> extends _$VehicleModelCopyWithImpl<$Res>
       vehicleID: vehicleID == freezed
           ? _value.vehicleID
           : vehicleID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       vehicleType: vehicleType == freezed
           ? _value.vehicleType
           : vehicleType // ignore: cast_nullable_to_non_nullable
@@ -152,7 +152,7 @@ class __$VehicleModelCopyWithImpl<$Res> extends _$VehicleModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VehicleModel implements _VehicleModel {
   const _$_VehicleModel(
-      {required this.vehicleID,
+      {this.vehicleID,
       required this.vehicleType,
       required this.regNo,
       required this.customerID});
@@ -161,7 +161,7 @@ class _$_VehicleModel implements _VehicleModel {
       _$$_VehicleModelFromJson(json);
 
   @override
-  final int vehicleID;
+  final int? vehicleID;
   @override
   final String vehicleType;
   @override
@@ -208,7 +208,7 @@ class _$_VehicleModel implements _VehicleModel {
 
 abstract class _VehicleModel implements VehicleModel {
   const factory _VehicleModel(
-      {required int vehicleID,
+      {int? vehicleID,
       required String vehicleType,
       required String regNo,
       required int customerID}) = _$_VehicleModel;
@@ -217,7 +217,7 @@ abstract class _VehicleModel implements VehicleModel {
       _$_VehicleModel.fromJson;
 
   @override
-  int get vehicleID;
+  int? get vehicleID;
   @override
   String get vehicleType;
   @override
@@ -227,5 +227,202 @@ abstract class _VehicleModel implements VehicleModel {
   @override
   @JsonKey(ignore: true)
   _$VehicleModelCopyWith<_VehicleModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+AddVehicleModel _$AddVehicleModelFromJson(Map<String, dynamic> json) {
+  return _AddVehicleModel.fromJson(json);
+}
+
+/// @nodoc
+class _$AddVehicleModelTearOff {
+  const _$AddVehicleModelTearOff();
+
+  _AddVehicleModel call(
+      {required String vehicleType,
+      required String regNo,
+      required int customerID}) {
+    return _AddVehicleModel(
+      vehicleType: vehicleType,
+      regNo: regNo,
+      customerID: customerID,
+    );
+  }
+
+  AddVehicleModel fromJson(Map<String, Object?> json) {
+    return AddVehicleModel.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $AddVehicleModel = _$AddVehicleModelTearOff();
+
+/// @nodoc
+mixin _$AddVehicleModel {
+  String get vehicleType => throw _privateConstructorUsedError;
+  String get regNo => throw _privateConstructorUsedError;
+  int get customerID => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AddVehicleModelCopyWith<AddVehicleModel> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AddVehicleModelCopyWith<$Res> {
+  factory $AddVehicleModelCopyWith(
+          AddVehicleModel value, $Res Function(AddVehicleModel) then) =
+      _$AddVehicleModelCopyWithImpl<$Res>;
+  $Res call({String vehicleType, String regNo, int customerID});
+}
+
+/// @nodoc
+class _$AddVehicleModelCopyWithImpl<$Res>
+    implements $AddVehicleModelCopyWith<$Res> {
+  _$AddVehicleModelCopyWithImpl(this._value, this._then);
+
+  final AddVehicleModel _value;
+  // ignore: unused_field
+  final $Res Function(AddVehicleModel) _then;
+
+  @override
+  $Res call({
+    Object? vehicleType = freezed,
+    Object? regNo = freezed,
+    Object? customerID = freezed,
+  }) {
+    return _then(_value.copyWith(
+      vehicleType: vehicleType == freezed
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as String,
+      regNo: regNo == freezed
+          ? _value.regNo
+          : regNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerID: customerID == freezed
+          ? _value.customerID
+          : customerID // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$AddVehicleModelCopyWith<$Res>
+    implements $AddVehicleModelCopyWith<$Res> {
+  factory _$AddVehicleModelCopyWith(
+          _AddVehicleModel value, $Res Function(_AddVehicleModel) then) =
+      __$AddVehicleModelCopyWithImpl<$Res>;
+  @override
+  $Res call({String vehicleType, String regNo, int customerID});
+}
+
+/// @nodoc
+class __$AddVehicleModelCopyWithImpl<$Res>
+    extends _$AddVehicleModelCopyWithImpl<$Res>
+    implements _$AddVehicleModelCopyWith<$Res> {
+  __$AddVehicleModelCopyWithImpl(
+      _AddVehicleModel _value, $Res Function(_AddVehicleModel) _then)
+      : super(_value, (v) => _then(v as _AddVehicleModel));
+
+  @override
+  _AddVehicleModel get _value => super._value as _AddVehicleModel;
+
+  @override
+  $Res call({
+    Object? vehicleType = freezed,
+    Object? regNo = freezed,
+    Object? customerID = freezed,
+  }) {
+    return _then(_AddVehicleModel(
+      vehicleType: vehicleType == freezed
+          ? _value.vehicleType
+          : vehicleType // ignore: cast_nullable_to_non_nullable
+              as String,
+      regNo: regNo == freezed
+          ? _value.regNo
+          : regNo // ignore: cast_nullable_to_non_nullable
+              as String,
+      customerID: customerID == freezed
+          ? _value.customerID
+          : customerID // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_AddVehicleModel implements _AddVehicleModel {
+  const _$_AddVehicleModel(
+      {required this.vehicleType,
+      required this.regNo,
+      required this.customerID});
+
+  factory _$_AddVehicleModel.fromJson(Map<String, dynamic> json) =>
+      _$$_AddVehicleModelFromJson(json);
+
+  @override
+  final String vehicleType;
+  @override
+  final String regNo;
+  @override
+  final int customerID;
+
+  @override
+  String toString() {
+    return 'AddVehicleModel(vehicleType: $vehicleType, regNo: $regNo, customerID: $customerID)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _AddVehicleModel &&
+            const DeepCollectionEquality()
+                .equals(other.vehicleType, vehicleType) &&
+            const DeepCollectionEquality().equals(other.regNo, regNo) &&
+            const DeepCollectionEquality()
+                .equals(other.customerID, customerID));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(vehicleType),
+      const DeepCollectionEquality().hash(regNo),
+      const DeepCollectionEquality().hash(customerID));
+
+  @JsonKey(ignore: true)
+  @override
+  _$AddVehicleModelCopyWith<_AddVehicleModel> get copyWith =>
+      __$AddVehicleModelCopyWithImpl<_AddVehicleModel>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_AddVehicleModelToJson(this);
+  }
+}
+
+abstract class _AddVehicleModel implements AddVehicleModel {
+  const factory _AddVehicleModel(
+      {required String vehicleType,
+      required String regNo,
+      required int customerID}) = _$_AddVehicleModel;
+
+  factory _AddVehicleModel.fromJson(Map<String, dynamic> json) =
+      _$_AddVehicleModel.fromJson;
+
+  @override
+  String get vehicleType;
+  @override
+  String get regNo;
+  @override
+  int get customerID;
+  @override
+  @JsonKey(ignore: true)
+  _$AddVehicleModelCopyWith<_AddVehicleModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

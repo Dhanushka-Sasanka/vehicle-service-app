@@ -7,6 +7,7 @@ import 'package:vehicle_app/models/_shared/http_response/http_response_model.dar
 import 'package:vehicle_app/models/appointment/appointment_model.dart';
 import 'package:vehicle_app/models/service/service_model.dart';
 import 'package:vehicle_app/models/vehicle/vehicle_model.dart';
+import 'package:vehicle_app/routes/app_router.gr.dart';
 import 'package:vehicle_app/services/appointment/appointment_service.dart';
 import 'package:vehicle_app/services/service/service_service.dart';
 import 'package:vehicle_app/services/vehicle/vehicle_service.dart';
@@ -32,7 +33,9 @@ class AddAppointmentController extends GetxController {
       List<ServiceModel> listServices = await _serviceService.getAllServices();
       services.value = listServices;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -42,7 +45,9 @@ class AddAppointmentController extends GetxController {
           await _vehicleService.getAllVehicles(userIdDemo);
       vehicles.value = listVehicles;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 
@@ -55,6 +60,7 @@ class AddAppointmentController extends GetxController {
   }
 
   addAppointment(BuildContext context) async {
+    Get.snackbar("Success", "Message");
     if (formKey.value.currentState!.saveAndValidate()) {
       if (kDebugMode) {
         print(formKey.value.currentState!.value);
@@ -72,9 +78,10 @@ class AddAppointmentController extends GetxController {
                   0,
               userID: 23));
       isLoading.value = false;
-      Get.snackbar(resp.status ? "Success" : "Error", resp.message);
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(resp.status ? "Success" : "Error")));
       if (resp.status) {
-        AutoRouter.of(context).pop();
+        AutoRouter.of(context).replace(const HomeRoute());
       }
     }
   }

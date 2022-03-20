@@ -55,7 +55,7 @@ class _HomeBaseState extends State<HomeBase> {
                       leading: const Icon(FontAwesomeIcons.plusCircle),
                       onTap: () {
                         Navigator.pop(context);
-                        AutoRouter.of(context).push(const AddVehicleRoute());
+                        AutoRouter.of(context).replace(const AddVehicleRoute());
                       },
                     ),
                     ListTile(
@@ -63,7 +63,7 @@ class _HomeBaseState extends State<HomeBase> {
                       title: const Text("My Vehicles"),
                       onTap: () {
                         Navigator.pop(context);
-                        AutoRouter.of(context).push(const MyVehiclesRoute());
+                        AutoRouter.of(context).replace(const MyVehiclesRoute());
                       },
                     ),
                     const Divider(),

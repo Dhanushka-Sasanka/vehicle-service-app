@@ -27,8 +27,7 @@ class AppointmentService extends BaseService {
   Future<HTTPResponseModel> addAppointment(
       AppointmentModel appointmentModel) async {
     try {
-      var response = await dio.post(
-          _appointmentApiConfigHandler!.addAppointment,
+      await dio.post(_appointmentApiConfigHandler!.addAppointment,
           data: appointmentModel.toJson());
 
       return const HTTPResponseModel(status: true);

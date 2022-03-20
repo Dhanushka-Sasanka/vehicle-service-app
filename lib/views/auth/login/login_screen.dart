@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             FormBuilderTextFieldWidget(
-                              initialValue: "abc@gmail.com",
+                              // initialValue: "abc@gmail.com",
                               name: 'email',
                               labelText: "Email",
                               validator: FormBuilderValidators.compose([
@@ -65,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ]),
                             ),
                             FormBuilderTextFieldWidget(
-                              initialValue: "123",
+                              // initialValue: "123",
                               name: 'password',
                               labelText: "Password",
                               validator: FormBuilderValidators.compose([

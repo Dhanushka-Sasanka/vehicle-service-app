@@ -24,9 +24,10 @@ class VehicleService extends BaseService {
     }
   }
 
-  Future<HTTPResponseModel> addVehicle(VehicleModel vehicleModel) async {
+  Future<HTTPResponseModel> addVehicle(AddVehicleModel vehicleModel) async {
+    var ss = vehicleModel.toJson();
     try {
-      var response = await dio.post(_vehicleApiConfigHandler!.addVehicle,
+      await dio.post(_vehicleApiConfigHandler!.addVehicle,
           data: vehicleModel.toJson());
       return const HTTPResponseModel(status: true);
     } catch (e) {

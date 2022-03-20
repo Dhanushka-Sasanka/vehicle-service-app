@@ -27,86 +27,89 @@ class _AddAppointmentScreenState extends State<AddAppointmentScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Obx(
-      () => FormBuilder(
-        key: _addAppointmentController.formKey.value,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Column(
-          children: [
-            FormBuilderDropdown(
-              name: 'vehicle',
-              decoration: const InputDecoration(
-                labelText: 'Vechicle',
-              ),
-              allowClear: true,
-              hint: const Text('Select Vehicle'),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(context)]),
-              items: _addAppointmentController.vehicles
-                  .map((vehicle) => DropdownMenuItem(
-                        value: vehicle.vehicleID,
-                        child: Text(vehicle.regNo),
-                      ))
-                  .toList(),
-            ),
-            FormBuilderDropdown(
-              name: 'service',
-              decoration: const InputDecoration(
-                labelText: 'Service',
-              ),
-              allowClear: true,
-              hint: const Text('Select Service'),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(context)]),
-              items: _addAppointmentController.services
-                  .map((service) => DropdownMenuItem(
-                        value: service.serviceID,
-                        child: Text(service.serviceType),
-                      ))
-                  .toList(),
-              onChanged: _addAppointmentController.selectService,
-            ),
-            FormBuilderTextField(
-              name: 'servicePrice',
-              decoration: const InputDecoration(
-                labelText: 'Service price',
-              ),
-              enabled: false,
-            ),
-            FormBuilderDateTimePicker(
-              name: 'pickDate',
-              // onChanged: _onChanged,
-              inputType: InputType.both,
-              decoration: const InputDecoration(
-                labelText: 'Appointment Date',
-              ),
-              initialValue: DateTime.now(),
-            ),
-            SizedBox(height: size.height * 0.05),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: defaultPaddingX2, bottom: defaultPaddingX2),
-              child: Row(
+      () => _addAppointmentController.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : FormBuilder(
+              key: _addAppointmentController.formKey.value,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: kButtonBgColor),
-                    onPressed: () async =>
-                        await _addAppointmentController.addAppointment(context),
+                  FormBuilderDropdown(
+                    name: 'vehicle',
+                    decoration: const InputDecoration(
+                      labelText: 'Vechicle',
+                    ),
+                    allowClear: true,
+                    hint: const Text('Select Vehicle'),
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
+                    items: _addAppointmentController.vehicles
+                        .map((vehicle) => DropdownMenuItem(
+                              value: vehicle.vehicleID,
+                              child: Text(vehicle.regNo),
+                            ))
+                        .toList(),
+                  ),
+                  FormBuilderDropdown(
+                    name: 'service',
+                    decoration: const InputDecoration(
+                      labelText: 'Service',
+                    ),
+                    allowClear: true,
+                    hint: const Text('Select Service'),
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
+                    items: _addAppointmentController.services
+                        .map((service) => DropdownMenuItem(
+                              value: service.serviceID,
+                              child: Text(service.serviceType),
+                            ))
+                        .toList(),
+                    onChanged: _addAppointmentController.selectService,
+                  ),
+                  FormBuilderTextField(
+                    name: 'servicePrice',
+                    decoration: const InputDecoration(
+                      labelText: 'Service price',
+                    ),
+                    enabled: false,
+                  ),
+                  FormBuilderDateTimePicker(
+                    name: 'pickDate',
+                    // onChanged: _onChanged,
+                    inputType: InputType.both,
+                    decoration: const InputDecoration(
+                      labelText: 'Appointment Date',
+                    ),
+                    initialValue: DateTime.now(),
+                  ),
+                  SizedBox(height: size.height * 0.05),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: defaultPaddingX2, bottom: defaultPaddingX2),
                     child: Row(
-                      children: const [
-                        Text("Add Appointment"),
-                        SizedBox(
-                          width: 10,
+                      children: [
+                        ElevatedButton(
+                          style:
+                              ElevatedButton.styleFrom(primary: kButtonBgColor),
+                          onPressed: () async => await _addAppointmentController
+                              .addAppointment(context),
+                          child: Row(
+                            children: const [
+                              Text("Add Appointment"),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(FontAwesomeIcons.signOutAlt)
+                            ],
+                          ),
                         ),
-                        Icon(FontAwesomeIcons.signOutAlt)
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

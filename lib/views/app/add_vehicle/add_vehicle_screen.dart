@@ -27,61 +27,64 @@ class _AddVehicleScreenState extends State<AddVehicleScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Obx(
-      () => FormBuilder(
-        key: _addVehicleController.formKey.value,
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        child: Column(
-          children: [
-            FormBuilderDropdown(
-              name: 'vehicleType',
-              decoration: const InputDecoration(
-                labelText: 'Vechicle Type',
-              ),
-              allowClear: true,
-              hint: const Text('Select Vehicle Type'),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(context)]),
-              items: _addVehicleController.vehicleTypes
-                  .map((vehicleType) => DropdownMenuItem(
-                        value: vehicleType,
-                        child: Text(vehicleType),
-                      ))
-                  .toList(),
-            ),
-            FormBuilderTextField(
-              name: 'regNo',
-              decoration: const InputDecoration(
-                labelText: 'Vehicle Reg No',
-              ),
-              validator: FormBuilderValidators.compose(
-                  [FormBuilderValidators.required(context)]),
-            ),
-            SizedBox(height: size.height * 0.05),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: defaultPaddingX2, bottom: defaultPaddingX2),
-              child: Row(
+      () => _addVehicleController.isLoading.value
+          ? const Center(child: CircularProgressIndicator())
+          : FormBuilder(
+              key: _addVehicleController.formKey.value,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
                 children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: kButtonBgColor),
-                    onPressed: () async =>
-                        await _addVehicleController.addVehicle(context),
+                  FormBuilderDropdown(
+                    name: 'vehicleType',
+                    decoration: const InputDecoration(
+                      labelText: 'Vechicle Type',
+                    ),
+                    allowClear: true,
+                    hint: const Text('Select Vehicle Type'),
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
+                    items: _addVehicleController.vehicleTypes
+                        .map((vehicleType) => DropdownMenuItem(
+                              value: vehicleType,
+                              child: Text(vehicleType),
+                            ))
+                        .toList(),
+                  ),
+                  FormBuilderTextField(
+                    name: 'regNo',
+                    decoration: const InputDecoration(
+                      labelText: 'Vehicle Reg No',
+                    ),
+                    validator: FormBuilderValidators.compose(
+                        [FormBuilderValidators.required(context)]),
+                  ),
+                  SizedBox(height: size.height * 0.05),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: defaultPaddingX2, bottom: defaultPaddingX2),
                     child: Row(
-                      children: const [
-                        Text("Add Vehicle"),
-                        SizedBox(
-                          width: 10,
+                      children: [
+                        ElevatedButton(
+                          style:
+                              ElevatedButton.styleFrom(primary: kButtonBgColor),
+                          onPressed: () async =>
+                              await _addVehicleController.addVehicle(context),
+                          child: Row(
+                            children: const [
+                              Text("Add Vehicle"),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Icon(FontAwesomeIcons.signOutAlt)
+                            ],
+                          ),
                         ),
-                        Icon(FontAwesomeIcons.signOutAlt)
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

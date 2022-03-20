@@ -1,13 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_app/models/vehicle/vehicle_model.dart';
 import 'package:vehicle_app/services/vehicle/vehicle_service.dart';
 import 'package:vehicle_app/utils/constants.dart';
 
 class MyVehiclesController extends GetxController {
-  var myVehicles = <VehicleModel>[
-    // const VehicleModel(
-    //     vehicleID: 1, vehicleType: "CAR", regNo: "PA 4949", customerID: 23)
-  ].obs;
+  var myVehicles = <VehicleModel>[].obs;
   final VehicleService _vehicleService = Get.find<VehicleService>();
   @override
   void onReady() {
@@ -21,7 +19,9 @@ class MyVehiclesController extends GetxController {
           await _vehicleService.getAllVehicles(userIdDemo);
       myVehicles.value = listVehicles;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }

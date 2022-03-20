@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:vehicle_app/models/appointment/appointment_model.dart';
 import 'package:vehicle_app/services/appointment/appointment_service.dart';
@@ -19,7 +20,9 @@ class AppointmentHistoryController extends GetxController {
           await _appointmentService.getAllAppointments(userIdDemo);
       myAppointments.value = listAppointments;
     } catch (e) {
-      print(e);
+      if (kDebugMode) {
+        print(e);
+      }
     }
   }
 }
